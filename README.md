@@ -35,6 +35,20 @@ This repository contains a JavaScript code snippet that demonstrates how to crea
 8. When the user leaves the 'box' element, the 'onMouseLeave' function is called to animate the 'y' and 'time' properties of the 'tweens' object to their initial values.
 9. The 'updatePath' function is called by the animation methods to update the shape of the path element based on the 'x' and 'y' properties of the 'tweens' object.
 
+## Bezier curves
+
+A Bezier curve is a type of curve that is defined by control points. It is commonly used in computer graphics and animation to create smooth and curved paths. In the provided code, a quadratic Bezier curve is used to create an animated shape for the SVG path element.
+
+In a quadratic Bezier curve, there are three points involved - the start point, the control point, and the end point. The curve is determined by interpolating between these points. The start point and end point are the anchor points of the curve, while the control point influences the shape and direction of the curve.
+
+In the code, the updatePath() function is responsible for updating the shape of the path element based on the 'x' and 'y' properties of the 'tweens' object. It calculates the width of the window and creates a quadratic Bezier curve using the 'x' and 'y' values.
+
+The SVG path string is constructed using the following format: `M startX,startY Q controlX,controlY endX,endY`. 'M' represents the start point, 'Q' represents the control point, and the coordinates (startX, startY), (controlX, controlY), and (endX, endY) correspond to the respective points.
+
+In the code, the 'x' property of the 'tweens' object is used to determine the horizontal position of the control point along the width of the window, while the 'y' property influences the vertical position of the control point based on the user's mouse movements.
+
+By updating the 'd' attribute of the path element with the new SVG path string, the animation creates a dynamic and interactive effect where the shape of the path element smoothly transitions between different positions, creating a visually appealing motion.
+
 ## Customization
 
 You can customize the animation behavior by modifying the duration, easing, and other parameters in the code. Additionally, you can apply different CSS styles or modify the SVG path element to suit your desired design.
