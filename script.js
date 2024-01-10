@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           onUpdate: updatePath,
         });
       }
+      // `M startX,startY Q controlX,controlY endX,endY`. 'M' represents the start point, 'Q' represents the control point, and the coordinates (startX, startY), (controlX, controlY), and (endX, endY) correspond to the respective points.
 
       function updatePath() {
         const w = window.innerWidth;
