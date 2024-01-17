@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function (event) {
   window.addEventListener("load", (event) => {
-    document.querySelectorAll(".box").forEach((box) => {
+    document.querySelectorAll(".box").forEach((box, i) => {
       const path = box.querySelector("svg path");
-      const tweens = { y: 0, x: 0.5, time: Math.PI / 2 };
+      const tweens = { y: 0, x: 0.5, i: i };
 
       if (!path) return;
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         gsap.to(tweens, {
           y: "+=" + evt.movementY,
           x: (evt.clientX - box.getBoundingClientRect().left) / box.offsetWidth,
-          duration: 0.1,
+          duration: 0.001,
           ease: "sine.out",
           onUpdate: updatePath,
           overwrite: "auto",
@@ -27,15 +27,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       function onMouseEnter() {
         gsap.killTweensOf(tweens);
-        gsap.set(tweens, { time: Math.PI / 2 });
       }
 
       function onMouseLeave() {
         gsap.to(tweens, {
-          y: 0,
+          y: 0 + i * 40,
           time: "+=0",
-          duration: 1,
+          duration: 3.5,
           ease: "elastic.out(1, 0.3)",
+          delay: 0.1 * i,
           onUpdate: updatePath,
         });
       }
